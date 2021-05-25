@@ -1,11 +1,19 @@
 import matplotlib.pyplot as plt
 import math
 import numpy as np
+import os.path
 def frange(x, y, jump):
     while x < y:
         yield x
         x += jump
-with open('results.xml', 'w') as f:
+
+dirname = os.path.dirname(__file__)
+filename = os.path.join(dirname,'results')
+if not os.path.exists(filename):
+    os.mkdir(filename)
+filename = os.path.join(filename, 'results.xml')
+
+with open(filename, 'w') as f:
     xres = []
     fres = []
     for x in frange(-10, 10, 0.01):
